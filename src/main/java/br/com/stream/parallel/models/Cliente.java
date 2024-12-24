@@ -1,23 +1,20 @@
 package br.com.stream.parallel.models;
 
+import java.util.UUID;
+
 public class Cliente {
-    private Long id;
+    private String id;
 
     private String nome;
 
-    private String cpf;
-
-    private String email;
-
-    private String telefone;
-
     public Cliente preencher(Long id, String nome, String cpf, String email, String telefone) {
-        this.id = id;
+        this.id = criarIdentificadorUnico();
         this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefone = telefone;
         return this;
+    }
+
+    private String criarIdentificadorUnico() {
+        return UUID.randomUUID().toString();
     }
 
     public Cliente() {
@@ -26,30 +23,6 @@ public class Cliente {
 
     public static Cliente  criarInstancia() {
         return new Cliente();
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
