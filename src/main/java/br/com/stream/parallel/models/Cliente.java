@@ -7,21 +7,17 @@ public class Cliente {
 
     private String nome;
 
-    public Cliente preencher(Long id, String nome, String cpf, String email, String telefone) {
+    public Cliente preencher(String nome) {
         this.id = criarIdentificadorUnico();
         this.nome = nome;
         return this;
-    }
-
-    private String criarIdentificadorUnico() {
-        return UUID.randomUUID().toString();
     }
 
     public Cliente() {
 
     }
 
-    public static Cliente  criarInstancia() {
+    public static Cliente criarInstancia() {
         return new Cliente();
     }
 
@@ -29,15 +25,16 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    private String criarIdentificadorUnico() {
+        return UUID.randomUUID().toString();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s, Nome: %s", id, nome);
     }
 }
