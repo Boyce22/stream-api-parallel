@@ -12,38 +12,41 @@ public class Main {
             2 - Processamento paralelo
             0 - Sair
             ==========================================
-            Digite sua opção: 
-            """;
-    private static final int OPCAO_SEQUENCIAL = 1;
+            Digite sua opção:""";
 
+    private static final int OPCAO_SEQUENCIAL = 1;
     private static final int OPCAO_PARALELO = 2;
+    private static final int OPCAO_SAIR = 0;
+
+
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
         Processamento processamentoCliente = new Processamento();
-
         int opcao = obterOpcaoDoUsuario();
 
-        if (opcao == OPCAO_SEQUENCIAL) {
-            processamentoCliente.processamentoSequencial();
-            return;
+        while (opcao != OPCAO_SAIR) {
+            switch (opcao) {
+                case OPCAO_SEQUENCIAL -> processamentoCliente.processamentoSequencial();
+                case OPCAO_PARALELO -> processamentoCliente.processamentoParalelo();
+                default -> System.out.println("Opção inválida! Por favor, escolha novamente.");
+            }
+
+            opcao = obterOpcaoDoUsuario();
         }
 
-        if (opcao == OPCAO_PARALELO) {
-            processamentoCliente.processamentoParalelo();
-            return;
-        }
-
-        System.out.println("Opção inválida, encerrando o programa.");
+        System.out.println("Programa encerrado.");
     }
 
     private static int obterOpcaoDoUsuario() {
         Typing typing = new Typing();
-        typing.typeText(MENU_OPCOES); ;
+        typing.typeText(MENU_OPCOES);
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            if (scanner.hasNextInt()) {
-                return scanner.nextInt();
-            }
+        if (SCANNER.hasNextInt()) {
+            return SCANNER.nextInt();
+        } else {
+            System.out.println("Entrada inválida! Por favor, insira um número.");
+            SCANNER.nextLine();
         }
         return -1;
     }
