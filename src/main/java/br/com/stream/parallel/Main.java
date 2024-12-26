@@ -27,8 +27,14 @@ public class Main {
 
         while (opcao != OPCAO_SAIR) {
             switch (opcao) {
-                case OPCAO_SEQUENCIAL -> processamentoCliente.processamentoSequencial();
-                case OPCAO_PARALELO -> processamentoCliente.processamentoParalelo();
+                case OPCAO_SEQUENCIAL -> {
+                    processamentoCliente.processamentoSequencial();
+                    limparTela();
+                }
+                case OPCAO_PARALELO -> {
+                    processamentoCliente.processamentoParalelo();
+                    limparTela();
+                }
                 default -> System.out.println("Opção inválida! Por favor, escolha novamente.");
             }
 
@@ -36,6 +42,20 @@ public class Main {
         }
 
         System.out.println("Programa encerrado.");
+    }
+
+    private static void limparTela() {
+        try {
+            Thread.sleep(5000);
+
+            for (int i = 0; i < 100; i++) {
+                System.out.println("\n");
+            }
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("\n[Erro na limpeza da tela.]");
+        }
     }
 
     private static int obterOpcaoDoUsuario() {
