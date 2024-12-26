@@ -65,13 +65,15 @@ List<Integer> numerosPrimos = IntStream.rangeClosed(2, LIMITE_SUPERIOR)
 Durante a execução, o programa apresenta um menu para que o usuário escolha o tipo de processamento desejado:
 
 ```plaintext
-=== Escolha uma forma de processamento ===
-
-1 - Processamento Sequencial
-2 - Processamento Paralelo
-0 - Sair
-
-Digite sua opção:
+==========================================
+    Bem-vindo ao Processador de Números
+==========================================
+    Escolha uma forma de processamento:
+              
+    1 - Processamento Sequencial
+    2 - Processamento Paralelo
+    0 - Sair
+==========================================
 ```
 
 Ao escolher uma das opções, o programa executa o cálculo de números primos e exibe informações como o **tempo total de processamento** e a **quantidade de resultados encontrados**.
